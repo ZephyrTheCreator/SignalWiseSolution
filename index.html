@@ -7,7 +7,7 @@
     <title>SignalWise Solutions - AI Consulting & Business Automation</title>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
 
-    <!-- Tailwind CSS CDN for reliable dark mode support -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome for icons -->
@@ -18,36 +18,102 @@
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-20px); }
       }
+
+      @keyframes lightning {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+
+      @keyframes shimmer {
+        0% { background-position: -1000px 0; }
+        100% { background-position: 1000px 0; }
+      }
+
       .float-animation {
         animation: float 6s ease-in-out infinite;
       }
+
+      .lightning-glow {
+        animation: lightning 3s ease-in-out infinite;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #9333ea 0%, #c084fc 50%, #e9d5ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .wizard-glow {
+        box-shadow: 0 0 30px rgba(147, 51, 234, 0.3), 0 0 60px rgba(147, 51, 234, 0.2);
+      }
+
+      .royal-gradient {
+        background: linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #a78bfa 100%);
+      }
+
+      .shimmer-effect {
+        background: linear-gradient(90deg, transparent, rgba(147, 51, 234, 0.3), transparent);
+        background-size: 1000px 100%;
+        animation: shimmer 3s infinite;
+      }
     </style>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'royal-purple': {
+                50: '#faf5ff',
+                100: '#f3e8ff',
+                200: '#e9d5ff',
+                300: '#d8b4fe',
+                400: '#c084fc',
+                500: '#a855f7',
+                600: '#9333ea',
+                700: '#7e22ce',
+                800: '#6b21a8',
+                900: '#581c87',
+                950: '#3b0764',
+              },
+            }
+          }
+        }
+      }
+    </script>
   </head>
 
-  <body class="bg-slate-950 text-slate-100 antialiased">
+  <body class="bg-slate-950 text-slate-100 antialiased overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
+    <nav class="fixed w-full top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-purple-900/30">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-          <div class="flex-shrink-0">
-            <span class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
+          <div class="flex-shrink-0 flex items-center space-x-3">
+            <div class="relative">
+              <div class="absolute inset-0 bg-purple-600 rounded-full blur-xl opacity-50"></div>
+              <div class="relative w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center wizard-glow">
+                <i class="fas fa-wand-magic-sparkles text-white text-lg"></i>
+              </div>
+            </div>
+            <span class="text-xl font-bold gradient-text">
               SignalWise Solutions
             </span>
           </div>
 
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
-            <a href="#hero" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Home</a>
-            <a href="#services" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Services</a>
-            <a href="#why-us" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Why Us</a>
-            <a href="#case-studies" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Case Studies</a>
-            <a href="#contact" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors">
+            <a href="#hero" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Home</a>
+            <a href="#services" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Services</a>
+            <a href="#why-us" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Why Us</a>
+            <a href="#case-studies" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Case Studies</a>
+            <a href="#contact" class="px-5 py-2 royal-gradient text-white text-sm font-semibold rounded-lg transition-all shadow-lg shadow-purple-900/50 hover:shadow-purple-600/50 hover:scale-105">
               Contact
             </a>
           </div>
 
           <!-- Mobile Menu Button -->
-          <button id="mobile-menu-toggle" class="md:hidden text-slate-300 hover:text-white">
+          <button id="mobile-menu-toggle" class="md:hidden text-slate-300 hover:text-purple-400">
             <i class="fas fa-bars text-xl"></i>
           </button>
         </div>
@@ -55,11 +121,11 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden pb-4">
           <div class="flex flex-col space-y-3">
-            <a href="#hero" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Home</a>
-            <a href="#services" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Services</a>
-            <a href="#why-us" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Why Us</a>
-            <a href="#case-studies" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Case Studies</a>
-            <a href="#contact" class="text-slate-300 hover:text-white text-sm font-medium transition-colors">Contact</a>
+            <a href="#hero" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Home</a>
+            <a href="#services" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Services</a>
+            <a href="#why-us" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Why Us</a>
+            <a href="#case-studies" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Case Studies</a>
+            <a href="#contact" class="text-slate-300 hover:text-purple-400 text-sm font-medium transition-colors">Contact</a>
           </div>
         </div>
       </div>
@@ -67,214 +133,280 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      <!-- Subtle background gradient -->
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-slate-950 to-violet-950/20"></div>
+      <!-- Dramatic Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950/40 to-slate-950"></div>
 
-      <!-- Decorative elements -->
-      <div class="absolute inset-0 overflow-hidden opacity-20">
-        <div class="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -top-48 -left-24"></div>
-        <div class="absolute w-96 h-96 bg-violet-500/10 rounded-full blur-3xl -bottom-48 -right-24"></div>
+      <!-- Animated Lightning Effect -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-20 left-1/4 w-1 h-40 bg-gradient-to-b from-purple-400 to-transparent lightning-glow" style="animation-delay: 0s;"></div>
+        <div class="absolute top-40 right-1/3 w-1 h-32 bg-gradient-to-b from-purple-500 to-transparent lightning-glow" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-60 left-1/2 w-1 h-36 bg-gradient-to-b from-purple-300 to-transparent lightning-glow" style="animation-delay: 2s;"></div>
       </div>
 
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 overflow-hidden opacity-30">
+        <div class="absolute w-96 h-96 bg-purple-600/20 rounded-full blur-3xl -top-48 -left-24"></div>
+        <div class="absolute w-[600px] h-[600px] bg-purple-800/30 rounded-full blur-3xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -bottom-48 -right-24"></div>
+      </div>
+
+      <!-- Mountain Silhouette Pattern (SVG) -->
+      <div class="absolute bottom-0 left-0 right-0 h-64 opacity-10">
+        <svg viewBox="0 0 1440 320" class="w-full h-full" preserveAspectRatio="none">
+          <path fill="currentColor" class="text-purple-900" d="M0,128L48,144C96,160,192,192,288,181.3C384,171,480,117,576,112C672,107,768,149,864,154.7C960,160,1056,128,1152,128C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 z-10">
         <div class="text-center max-w-4xl mx-auto">
-          <!-- Icon -->
+          <!-- Wizard Icon -->
           <div class="mb-8 flex justify-center">
-            <div class="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 float-animation">
-              <i class="fas fa-brain text-5xl text-blue-400"></i>
+            <div class="relative">
+              <div class="absolute inset-0 bg-purple-600 rounded-2xl blur-2xl opacity-60"></div>
+              <div class="relative p-6 bg-gradient-to-br from-purple-900/80 to-purple-700/80 rounded-2xl border-2 border-purple-500/50 float-animation backdrop-blur-sm">
+                <i class="fas fa-hat-wizard text-6xl text-purple-200"></i>
+                <div class="absolute -top-2 -right-2 flex space-x-1">
+                  <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                  <div class="w-2 h-2 bg-purple-300 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                  <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Headline -->
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            <span class="text-white">Transform Your Business with</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <span class="text-white">Harness the Power of</span>
             <br />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">
-              AI-Powered Automation
+            <span class="gradient-text text-5xl sm:text-6xl lg:text-8xl">
+              AI Wizardry
             </span>
           </h1>
 
           <!-- Subheadline -->
-          <p class="text-lg sm:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Unlock unprecedented productivity with cutting-edge AI solutions tailored to your workflow.
-            We transform complex processes into seamless, intelligent automation.
+          <p class="text-lg sm:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Transform your business with mystical AI automation and intelligent solutions.
+            We wield cutting-edge technology to orchestrate seamless workflows and unlock unprecedented productivity.
           </p>
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <a href="#contact" class="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40">
-              Get Started Free
+            <a href="#contact" class="group relative px-8 py-4 royal-gradient text-white font-bold rounded-lg transition-all shadow-xl shadow-purple-900/50 hover:shadow-purple-600/60 hover:scale-105 overflow-hidden">
+              <span class="relative z-10 flex items-center justify-center gap-2">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                Cast Your Vision
+              </span>
+              <div class="absolute inset-0 shimmer-effect"></div>
             </a>
-            <a href="#services" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-lg transition-all border border-slate-700">
-              View Services
+            <a href="#services" class="px-8 py-4 bg-slate-900/80 border-2 border-purple-600/50 text-white font-semibold rounded-lg transition-all hover:bg-purple-900/30 hover:border-purple-500 backdrop-blur-sm">
+              Explore Our Magic
             </a>
           </div>
 
           <!-- Stats -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div class="p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800/50">
-              <div class="text-3xl font-bold text-blue-400 mb-1">500+</div>
-              <div class="text-sm text-slate-400">Hours Saved Monthly</div>
+            <div class="group relative p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative">
+                <div class="text-4xl font-bold gradient-text mb-1">500+</div>
+                <div class="text-sm text-slate-400">Hours Saved Monthly</div>
+              </div>
             </div>
-            <div class="p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800/50">
-              <div class="text-3xl font-bold text-violet-400 mb-1">95%</div>
-              <div class="text-sm text-slate-400">Process Efficiency</div>
+            <div class="group relative p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative">
+                <div class="text-4xl font-bold gradient-text mb-1">95%</div>
+                <div class="text-sm text-slate-400">Process Efficiency</div>
+              </div>
             </div>
-            <div class="p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-slate-800/50">
-              <div class="text-3xl font-bold text-emerald-400 mb-1">24/7</div>
-              <div class="text-sm text-slate-400">Automated Operations</div>
+            <div class="group relative p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div class="relative">
+                <div class="text-4xl font-bold gradient-text mb-1">24/7</div>
+                <div class="text-sm text-slate-400">Automated Operations</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <i class="fas fa-chevron-down text-purple-400 text-2xl"></i>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-slate-900/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxNDcsMzEsMjM0LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Our Core Services
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Our <span class="gradient-text">Magical Arsenal</span>
           </h2>
-          <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-            Comprehensive AI solutions designed to revolutionize how you work
+          <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+            Comprehensive AI spells designed to revolutionize how you work
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Service 1 -->
-          <div class="group p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition-all duration-300">
-            <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors">
-              <i class="fas fa-robot text-2xl text-blue-400"></i>
+          <div class="group relative p-8 bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-purple-800/30 hover:border-purple-600/60 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 wizard-glow">
+                <i class="fas fa-robot text-3xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">AI-Driven Automations</h3>
+              <p class="text-slate-300 mb-4 leading-relaxed">
+                Cast away repetitive tasks with intelligent automation powered by machine learning sorcery.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Document processing & data extraction</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Intelligent decision-making systems</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Predictive analytics & forecasting</span>
+                </li>
+              </ul>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">AI-Driven Automations</h3>
-            <p class="text-slate-400 mb-4 leading-relaxed">
-              Eliminate repetitive tasks with intelligent automation powered by machine learning.
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-blue-400 mt-1 mr-2 text-xs"></i>
-                <span>Document processing & data extraction</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-blue-400 mt-1 mr-2 text-xs"></i>
-                <span>Intelligent decision-making systems</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-blue-400 mt-1 mr-2 text-xs"></i>
-                <span>Predictive analytics & forecasting</span>
-              </li>
-            </ul>
           </div>
 
           <!-- Service 2 -->
-          <div class="group p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-violet-500/50 transition-all duration-300">
-            <div class="w-14 h-14 bg-violet-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-violet-500/20 transition-colors">
-              <i class="fas fa-project-diagram text-2xl text-violet-400"></i>
+          <div class="group relative p-8 bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-purple-800/30 hover:border-purple-600/60 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 wizard-glow">
+                <i class="fas fa-project-diagram text-3xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">Workflow Orchestration</h3>
+              <p class="text-slate-300 mb-4 leading-relaxed">
+                Weave together seamless operations with data-driven insights and mystical process engineering.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Process mapping & analysis</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Bottleneck identification & resolution</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Performance monitoring dashboards</span>
+                </li>
+              </ul>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Workflow Optimization</h3>
-            <p class="text-slate-400 mb-4 leading-relaxed">
-              Streamline operations with data-driven insights and process reengineering.
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-violet-400 mt-1 mr-2 text-xs"></i>
-                <span>Process mapping & analysis</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-violet-400 mt-1 mr-2 text-xs"></i>
-                <span>Bottleneck identification & resolution</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-violet-400 mt-1 mr-2 text-xs"></i>
-                <span>Performance monitoring dashboards</span>
-              </li>
-            </ul>
           </div>
 
           <!-- Service 3 -->
-          <div class="group p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300">
-            <div class="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors">
-              <i class="fas fa-plug text-2xl text-emerald-400"></i>
+          <div class="group relative p-8 bg-slate-900/80 backdrop-blur-sm rounded-2xl border border-purple-800/30 hover:border-purple-600/60 transition-all duration-500 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative">
+              <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 wizard-glow">
+                <i class="fas fa-plug text-3xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-3">Custom Integrations</h3>
+              <p class="text-slate-300 mb-4 leading-relaxed">
+                Enchant your tech stack with seamless connections creating a unified, intelligent ecosystem.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>API development & integration</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Legacy system modernization</span>
+                </li>
+                <li class="flex items-start text-sm text-slate-400">
+                  <i class="fas fa-sparkles text-purple-400 mt-1 mr-2"></i>
+                  <span>Real-time data synchronization</span>
+                </li>
+              </ul>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Custom Integrations</h3>
-            <p class="text-slate-400 mb-4 leading-relaxed">
-              Connect your entire tech stack seamlessly with custom-built integrations.
-            </p>
-            <ul class="space-y-2">
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-emerald-400 mt-1 mr-2 text-xs"></i>
-                <span>API development & integration</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-emerald-400 mt-1 mr-2 text-xs"></i>
-                <span>Legacy system modernization</span>
-              </li>
-              <li class="flex items-start text-sm text-slate-400">
-                <i class="fas fa-check text-emerald-400 mt-1 mr-2 text-xs"></i>
-                <span>Real-time data synchronization</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Why Choose Us Section -->
-    <section id="why-us" class="py-20 bg-slate-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="why-us" class="py-20 bg-slate-950 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-purple-950/10 to-transparent"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Why Choose Us
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Why Choose <span class="gradient-text">Our Wizardry</span>
           </h2>
-          <p class="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
-            We're your strategic partner in digital transformation, bringing deep technical expertise
-            and a proven track record of delivering measurable results.
+          <p class="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            We're your mystical partner in digital transformation, wielding deep technical expertise
+            and a proven grimoire of delivering measurable results.
           </p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Benefit 1 -->
-          <div class="text-center p-6 bg-slate-900/50 rounded-xl border border-slate-800/50 hover:border-blue-500/30 transition-all">
-            <div class="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-rocket text-2xl text-blue-400"></i>
+          <div class="group text-center p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all hover:scale-105">
+            <div class="relative inline-block mb-4">
+              <div class="absolute inset-0 bg-purple-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center mx-auto">
+                <i class="fas fa-bolt text-3xl text-white"></i>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Rapid Deployment</h3>
+            <h3 class="text-xl font-bold text-white mb-2">Lightning Speed</h3>
             <p class="text-sm text-slate-400 leading-relaxed">
-              See results in weeks, not months. Our agile approach gets you running fast.
+              See results in weeks, not months. Our agile spells get you running at lightning speed.
             </p>
           </div>
 
           <!-- Benefit 2 -->
-          <div class="text-center p-6 bg-slate-900/50 rounded-xl border border-slate-800/50 hover:border-violet-500/30 transition-all">
-            <div class="w-16 h-16 bg-violet-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-shield-alt text-2xl text-violet-400"></i>
+          <div class="group text-center p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all hover:scale-105">
+            <div class="relative inline-block mb-4">
+              <div class="absolute inset-0 bg-purple-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center mx-auto">
+                <i class="fas fa-shield-halved text-3xl text-white"></i>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Enterprise Security</h3>
+            <h3 class="text-xl font-bold text-white mb-2">Arcane Security</h3>
             <p class="text-sm text-slate-400 leading-relaxed">
-              Bank-level encryption and compliance with industry standards for your data.
+              Mystical-level encryption and compliance with industry standards protect your data.
             </p>
           </div>
 
           <!-- Benefit 3 -->
-          <div class="text-center p-6 bg-slate-900/50 rounded-xl border border-slate-800/50 hover:border-emerald-500/30 transition-all">
-            <div class="w-16 h-16 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-chart-line text-2xl text-emerald-400"></i>
+          <div class="group text-center p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all hover:scale-105">
+            <div class="relative inline-block mb-4">
+              <div class="absolute inset-0 bg-purple-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center mx-auto">
+                <i class="fas fa-chart-line text-3xl text-white"></i>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Proven ROI</h3>
+            <h3 class="text-xl font-bold text-white mb-2">Proven Results</h3>
             <p class="text-sm text-slate-400 leading-relaxed">
-              Average clients see 10x ROI within the first year of implementation.
+              Average clients see 10x ROI within the first year of our magical implementation.
             </p>
           </div>
 
           <!-- Benefit 4 -->
-          <div class="text-center p-6 bg-slate-900/50 rounded-xl border border-slate-800/50 hover:border-amber-500/30 transition-all">
-            <div class="w-16 h-16 bg-amber-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <i class="fas fa-headset text-2xl text-amber-400"></i>
+          <div class="group text-center p-6 bg-slate-900/50 backdrop-blur-sm rounded-xl border border-purple-800/30 hover:border-purple-600/50 transition-all hover:scale-105">
+            <div class="relative inline-block mb-4">
+              <div class="absolute inset-0 bg-purple-600 rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
+              <div class="relative w-20 h-20 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center mx-auto">
+                <i class="fas fa-hands-holding-circle text-3xl text-white"></i>
+              </div>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">24/7 Support</h3>
+            <h3 class="text-xl font-bold text-white mb-2">Eternal Support</h3>
             <p class="text-sm text-slate-400 leading-relaxed">
-              Dedicated support team always available to ensure flawless operations.
+              Dedicated wizards always available to ensure your systems run flawlessly, 24/7.
             </p>
           </div>
         </div>
@@ -282,36 +414,39 @@
     </section>
 
     <!-- Case Studies Section -->
-    <section id="case-studies" class="py-20 bg-slate-900/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="case-studies" class="py-20 bg-gradient-to-b from-slate-950 to-slate-900 relative">
+      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgxNDcsMzEsMjM0LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16">
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Real-World Results
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <span class="gradient-text">Legendary</span> Transformations
           </h2>
-          <p class="text-lg text-slate-400 max-w-2xl mx-auto">
-            See how we've helped businesses achieve breakthrough performance
+          <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+            Witness the magic: businesses enchanted with breakthrough performance
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Case Study 1 -->
-          <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition-all group">
-            <div class="h-40 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-              <i class="fas fa-building text-5xl text-white/30"></i>
+          <div class="group bg-slate-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-purple-800/30 hover:border-purple-600/60 transition-all hover:scale-105">
+            <div class="h-48 bg-gradient-to-br from-purple-700 via-purple-600 to-purple-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0ic3RhcnMiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMyIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNzdGFycykiLz48L3N2Zz4=')] opacity-30"></div>
+              <i class="fas fa-building text-6xl text-white/40 relative z-10"></i>
             </div>
             <div class="p-6">
-              <div class="text-xs text-blue-400 font-semibold mb-2 tracking-wider">FINANCIAL SERVICES</div>
-              <h3 class="text-xl font-bold text-white mb-2">Invoice Processing</h3>
-              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                Reduced processing time by 85% for a mid-sized firm, handling 10,000+ documents monthly.
+              <div class="text-xs text-purple-400 font-bold mb-2 tracking-wider">FINANCIAL SERVICES</div>
+              <h3 class="text-xl font-bold text-white mb-2">Invoice Processing Spell</h3>
+              <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                Conjured 85% time reduction for a mid-sized firm, handling 10,000+ enchanted documents monthly.
               </p>
-              <div class="flex gap-6 pt-4 border-t border-slate-800">
+              <div class="flex gap-6 pt-4 border-t border-purple-800/30">
                 <div>
-                  <div class="text-2xl font-bold text-blue-400">85%</div>
+                  <div class="text-2xl font-bold gradient-text">85%</div>
                   <div class="text-xs text-slate-500">Time Saved</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-blue-400">$200K</div>
+                  <div class="text-2xl font-bold gradient-text">$200K</div>
                   <div class="text-xs text-slate-500">Annual Savings</div>
                 </div>
               </div>
@@ -319,23 +454,24 @@
           </div>
 
           <!-- Case Study 2 -->
-          <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-violet-500/50 transition-all group">
-            <div class="h-40 bg-gradient-to-br from-violet-600 to-violet-800 flex items-center justify-center">
-              <i class="fas fa-shopping-cart text-5xl text-white/30"></i>
+          <div class="group bg-slate-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-purple-800/30 hover:border-purple-600/60 transition-all hover:scale-105">
+            <div class="h-48 bg-gradient-to-br from-purple-700 via-purple-600 to-purple-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0ic3RhcnMiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMyIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNzdGFycykiLz48L3N2Zz4=')] opacity-30"></div>
+              <i class="fas fa-shopping-cart text-6xl text-white/40 relative z-10"></i>
             </div>
             <div class="p-6">
-              <div class="text-xs text-violet-400 font-semibold mb-2 tracking-wider">E-COMMERCE</div>
-              <h3 class="text-xl font-bold text-white mb-2">Support Automation</h3>
-              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                AI chatbot handles 70% of inquiries automatically, improving response time to seconds.
+              <div class="text-xs text-purple-400 font-bold mb-2 tracking-wider">E-COMMERCE</div>
+              <h3 class="text-xl font-bold text-white mb-2">Support Enchantment</h3>
+              <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                AI familiar handles 70% of inquiries automatically with mystical response times.
               </p>
-              <div class="flex gap-6 pt-4 border-t border-slate-800">
+              <div class="flex gap-6 pt-4 border-t border-purple-800/30">
                 <div>
-                  <div class="text-2xl font-bold text-violet-400">70%</div>
+                  <div class="text-2xl font-bold gradient-text">70%</div>
                   <div class="text-xs text-slate-500">Auto-Resolved</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-violet-400">4.8/5</div>
+                  <div class="text-2xl font-bold gradient-text">4.8/5</div>
                   <div class="text-xs text-slate-500">Satisfaction</div>
                 </div>
               </div>
@@ -343,23 +479,24 @@
           </div>
 
           <!-- Case Study 3 -->
-          <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition-all group">
-            <div class="h-40 bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
-              <i class="fas fa-industry text-5xl text-white/30"></i>
+          <div class="group bg-slate-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-purple-800/30 hover:border-purple-600/60 transition-all hover:scale-105">
+            <div class="h-48 bg-gradient-to-br from-purple-700 via-purple-600 to-purple-900 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0ic3RhcnMiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMSIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMyIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNzdGFycykiLz48L3N2Zz4=')] opacity-30"></div>
+              <i class="fas fa-industry text-6xl text-white/40 relative z-10"></i>
             </div>
             <div class="p-6">
-              <div class="text-xs text-emerald-400 font-semibold mb-2 tracking-wider">MANUFACTURING</div>
-              <h3 class="text-xl font-bold text-white mb-2">Supply Chain</h3>
-              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
-                Predictive analytics reduced inventory costs by 40% while improving delivery times.
+              <div class="text-xs text-purple-400 font-bold mb-2 tracking-wider">MANUFACTURING</div>
+              <h3 class="text-xl font-bold text-white mb-2">Supply Chain Alchemy</h3>
+              <p class="text-slate-300 text-sm mb-4 leading-relaxed">
+                Transmuted predictive analytics into 40% cost reduction with improved delivery times.
               </p>
-              <div class="flex gap-6 pt-4 border-t border-slate-800">
+              <div class="flex gap-6 pt-4 border-t border-purple-800/30">
                 <div>
-                  <div class="text-2xl font-bold text-emerald-400">40%</div>
+                  <div class="text-2xl font-bold gradient-text">40%</div>
                   <div class="text-xs text-slate-500">Cost Reduction</div>
                 </div>
                 <div>
-                  <div class="text-2xl font-bold text-emerald-400">30%</div>
+                  <div class="text-2xl font-bold gradient-text">30%</div>
                   <div class="text-xs text-slate-500">Faster Delivery</div>
                 </div>
               </div>
@@ -370,62 +507,69 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-950">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-20 bg-slate-950 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-purple-950/20 via-transparent to-purple-950/20"></div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-12">
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Let's Transform Your Business
+          <h2 class="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Ready to <span class="gradient-text">Cast Your Spell</span>?
           </h2>
-          <p class="text-lg text-slate-400">
-            Ready to unlock AI automation? Get in touch for a free consultation.
+          <p class="text-lg text-slate-300">
+            Summon our wizards for a free consultation and unlock AI automation magic.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-12">
           <!-- Contact Form -->
-          <div class="bg-slate-900/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-800">
-            <form id="contact-form" action="/webhook/intake" method="POST" class="space-y-5">
+          <div class="relative p-8 bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-purple-800/30 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-600/5 to-transparent"></div>
+            <form id="contact-form" action="/webhook/intake" method="POST" class="space-y-5 relative z-10">
               <div>
-                <label for="name" class="block text-sm font-medium text-slate-300 mb-2">Full Name</label>
+                <label for="name" class="block text-sm font-semibold text-purple-200 mb-2">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   required
-                  class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
-                  placeholder="John Doe"
+                  class="w-full px-4 py-3 bg-slate-900/80 border border-purple-700/30 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label for="email" class="block text-sm font-medium text-slate-300 mb-2">Email Address</label>
+                <label for="email" class="block text-sm font-semibold text-purple-200 mb-2">Email Address</label>
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
-                  class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
-                  placeholder="john@company.com"
+                  class="w-full px-4 py-3 bg-slate-900/80 border border-purple-700/30 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  placeholder="your@email.com"
                 />
               </div>
 
               <div>
-                <label for="message" class="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                <label for="message" class="block text-sm font-semibold text-purple-200 mb-2">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   required
                   rows="4"
-                  class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
-                  placeholder="Tell us about your project..."
+                  class="w-full px-4 py-3 bg-slate-900/80 border border-purple-700/30 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                  placeholder="Tell us about your vision..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                class="w-full px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
+                class="group relative w-full px-8 py-4 royal-gradient text-white font-bold rounded-lg transition-all shadow-xl shadow-purple-900/50 hover:shadow-purple-600/60 hover:scale-105 overflow-hidden"
               >
-                Send Message
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  <i class="fas fa-paper-plane"></i>
+                  Send Message
+                </span>
+                <div class="absolute inset-0 shimmer-effect"></div>
               </button>
             </form>
           </div>
@@ -433,42 +577,52 @@
           <!-- Contact Info -->
           <div class="space-y-8">
             <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-envelope text-blue-400"></i>
+              <div class="relative">
+                <div class="absolute inset-0 bg-purple-600 rounded-lg blur-lg opacity-50"></div>
+                <div class="relative w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-purple-200 text-xl"></i>
+                </div>
               </div>
               <div>
-                <h3 class="text-lg font-semibold text-white mb-1">Email Us</h3>
-                <p class="text-slate-400">zacharyculp@signalwisesolutions.com</p>
-                <p class="text-slate-400">michaelallen@signalwisesolutions.com</p>
+                <h3 class="text-lg font-bold text-white mb-1">Email Our Wizards</h3>
+                <p class="text-purple-300">zacharyculp@signalwisesolutions.com</p>
+                <p class="text-purple-300">michaelallen@signalwisesolutions.com</p>
                 <p class="text-slate-500 text-sm mt-1">We respond within 24 hours</p>
               </div>
             </div>
 
             <div class="flex items-start space-x-4">
-              <div class="w-12 h-12 bg-violet-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-phone text-violet-400"></i>
+              <div class="relative">
+                <div class="absolute inset-0 bg-purple-600 rounded-lg blur-lg opacity-50"></div>
+                <div class="relative w-14 h-14 bg-gradient-to-br from-purple-600 to-purple-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-phone text-purple-200 text-xl"></i>
+                </div>
               </div>
               <div>
-                <h3 class="text-lg font-semibold text-white mb-1">Call Us</h3>
-                <p class="text-slate-400">+1 (555) 123-4567</p>
+                <h3 class="text-lg font-bold text-white mb-1">Summon Us</h3>
+                <p class="text-purple-300">+1 (555) 123-4567</p>
                 <p class="text-slate-500 text-sm mt-1">Mon-Fri 9am-6pm EST</p>
               </div>
             </div>
 
-            <div class="pt-6 border-t border-slate-800">
-              <h3 class="text-lg font-semibold text-white mb-4">Follow Us</h3>
+            <div class="pt-6 border-t border-purple-800/30">
+              <h3 class="text-lg font-bold text-white mb-4">Follow Our Journey</h3>
               <div class="flex space-x-3">
-                <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors">
-                  <i class="fab fa-linkedin text-slate-400 hover:text-white"></i>
+                <a href="#" class="group relative w-12 h-12 bg-slate-900 border border-purple-700/30 rounded-lg flex items-center justify-center transition-all hover:border-purple-500">
+                  <div class="absolute inset-0 bg-purple-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <i class="fab fa-linkedin text-slate-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
                 </a>
-                <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-400 rounded-lg flex items-center justify-center transition-colors">
-                  <i class="fab fa-twitter text-slate-400 hover:text-white"></i>
+                <a href="#" class="group relative w-12 h-12 bg-slate-900 border border-purple-700/30 rounded-lg flex items-center justify-center transition-all hover:border-purple-500">
+                  <div class="absolute inset-0 bg-purple-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <i class="fab fa-twitter text-slate-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
                 </a>
-                <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-slate-700 rounded-lg flex items-center justify-center transition-colors">
-                  <i class="fab fa-github text-slate-400 hover:text-white"></i>
+                <a href="#" class="group relative w-12 h-12 bg-slate-900 border border-purple-700/30 rounded-lg flex items-center justify-center transition-all hover:border-purple-500">
+                  <div class="absolute inset-0 bg-purple-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <i class="fab fa-github text-slate-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
                 </a>
-                <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors">
-                  <i class="fab fa-youtube text-slate-400 hover:text-white"></i>
+                <a href="#" class="group relative w-12 h-12 bg-slate-900 border border-purple-700/30 rounded-lg flex items-center justify-center transition-all hover:border-purple-500">
+                  <div class="absolute inset-0 bg-purple-600 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                  <i class="fab fa-youtube text-slate-400 group-hover:text-purple-400 transition-colors relative z-10"></i>
                 </a>
               </div>
             </div>
@@ -478,66 +632,73 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800/50 py-12">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-slate-950 border-t border-purple-900/30 py-12 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-purple-950/20"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <!-- Company Info -->
           <div>
-            <div class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400 mb-3">
-              SignalWise Solutions
+            <div class="flex items-center space-x-2 mb-3">
+              <div class="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-900 rounded-full flex items-center justify-center">
+                <i class="fas fa-wand-magic-sparkles text-white text-sm"></i>
+              </div>
+              <div class="text-lg font-bold gradient-text">
+                SignalWise Solutions
+              </div>
             </div>
             <p class="text-sm text-slate-400 leading-relaxed">
-              Empowering businesses with intelligent automation and AI-driven solutions.
+              Empowering businesses with magical automation and AI-driven solutions.
             </p>
           </div>
 
           <!-- Quick Links -->
           <div>
-            <h4 class="text-white font-semibold mb-3 text-sm">Quick Links</h4>
+            <h4 class="text-white font-bold mb-3 text-sm">Quick Links</h4>
             <ul class="space-y-2">
-              <li><a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Services</a></li>
-              <li><a href="#why-us" class="text-sm text-slate-400 hover:text-white transition-colors">Why Us</a></li>
-              <li><a href="#case-studies" class="text-sm text-slate-400 hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#contact" class="text-sm text-slate-400 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#services" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Services</a></li>
+              <li><a href="#why-us" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Why Us</a></li>
+              <li><a href="#case-studies" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Case Studies</a></li>
+              <li><a href="#contact" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
           <!-- Services -->
           <div>
-            <h4 class="text-white font-semibold mb-3 text-sm">Services</h4>
+            <h4 class="text-white font-bold mb-3 text-sm">Our Magic</h4>
             <ul class="space-y-2">
-              <li><a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">AI Automation</a></li>
-              <li><a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Workflow Optimization</a></li>
-              <li><a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Custom Integrations</a></li>
-              <li><a href="#services" class="text-sm text-slate-400 hover:text-white transition-colors">Consulting</a></li>
+              <li><a href="#services" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">AI Automation</a></li>
+              <li><a href="#services" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Workflow Orchestration</a></li>
+              <li><a href="#services" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Custom Integrations</a></li>
+              <li><a href="#services" class="text-sm text-slate-400 hover:text-purple-400 transition-colors">Consulting</a></li>
             </ul>
           </div>
 
           <!-- Contact -->
           <div>
-            <h4 class="text-white font-semibold mb-3 text-sm">Contact</h4>
+            <h4 class="text-white font-bold mb-3 text-sm">Reach Our Wizards</h4>
             <ul class="space-y-2 text-sm text-slate-400">
-              <li>zacharyculp@signalwisesolutions.com</li>
-              <li>michaelallen@signalwisesolutions.com</li>
+              <li class="hover:text-purple-400 transition-colors">zacharyculp@signalwisesolutions.com</li>
+              <li class="hover:text-purple-400 transition-colors">michaelallen@signalwisesolutions.com</li>
             </ul>
           </div>
         </div>
 
-        <div class="pt-8 border-t border-slate-800/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="pt-8 border-t border-purple-900/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p class="text-slate-500 text-sm">
-            &copy; 2025 SignalWise Solutions. All rights reserved.
+            &copy; 2025 SignalWise Solutions. All magic reserved.
           </p>
           <div class="flex gap-6 text-sm">
-            <a href="#" class="text-slate-500 hover:text-white transition-colors">Privacy</a>
-            <a href="#" class="text-slate-500 hover:text-white transition-colors">Terms</a>
-            <a href="#" class="text-slate-500 hover:text-white transition-colors">Cookies</a>
+            <a href="#" class="text-slate-500 hover:text-purple-400 transition-colors">Privacy</a>
+            <a href="#" class="text-slate-500 hover:text-purple-400 transition-colors">Terms</a>
+            <a href="#" class="text-slate-500 hover:text-purple-400 transition-colors">Cookies</a>
           </div>
         </div>
       </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-lg hidden items-center justify-center transition-all z-50">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 royal-gradient text-white rounded-full shadow-xl shadow-purple-900/50 hidden items-center justify-center transition-all hover:scale-110 z-50">
       <i class="fas fa-arrow-up"></i>
     </button>
 
